@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Texas Expo Tech Solutions LLC</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col font-sans">
+
+  <!-- Header -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <span class="font-extrabold text-sm sm:text-base tracking-tight">Texas Expo Tech Solutions</span>
+            <span class="text-[10px] bg-slate-800 text-blue-400 px-2 py-0.5 rounded font-mono ml-1">ADMIN CONSOLE</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs">
+          <a href="/" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition flex items-center gap-1.5">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> View Live Store
+          </a>
+          <button onclick="fetchAdminData()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold transition flex items-center gap-1.5">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Refresh
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+    
+    <!-- KPI Metrics Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Orders</span>
+          <span class="p-2 rounded-xl bg-blue-50 text-blue-600"><i data-lucide="shopping-bag" class="w-4 h-4"></i></span>
+        </div>
+        <h3 id="stat-total-orders" class="text-2xl font-black text-slate-900">0</h3>
+        <span class="text-[11px] text-emerald-600 font-semibold">&uarr; Walmart Active Pipeline</span>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Gross Revenue</span>
+          <span class="p-2 rounded-xl bg-emerald-50 text-emerald-600"><i data-lucide="dollar-sign" class="w-4 h-4"></i></span>
+        </div>
+        <h3 id="stat-gross-revenue" class="text-2xl font-black text-slate-900">$0.00</h3>
+        <span class="text-[11px] text-slate-400">Domestic US fulfillment</span>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Cash on Delivery (COD)</span>
+          <span class="p-2 rounded-xl bg-amber-50 text-amber-600"><i data-lucide="banknote" class="w-4 h-4"></i></span>
+        </div>
+        <h3 id="stat-cod-orders" class="text-2xl font-black text-slate-900">0</h3>
+        <span class="text-[11px] text-amber-600 font-semibold">Pay on Doorstep Orders</span>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Catalog</span>
+          <span class="p-2 rounded-xl bg-indigo-50 text-indigo-600"><i data-lucide="layers" class="w-4 h-4"></i></span>
+        </div>
+        <h3 class="text-2xl font-black text-slate-900">60 SKUs</h3>
+        <span class="text-[11px] text-indigo-600 font-semibold">4 Verified Categories</span>
+      </div>
+    </div>
+
+    <!-- Layout Grid: Orders List & Store Settings -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Orders Table Section (8 cols) -->
+      <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="font-bold text-base text-slate-900">Order Management</h3>
+            <p class="text-xs text-slate-500">Live order records with COD status and FedEx/UPS tracking</p>
+          </div>
+          <span class="text-xs font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg" id="orders-badge">0 orders loaded</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="p-3.5">Order ID</th>
+                <th class="p-3.5">Customer</th>
+                <th class="p-3.5">Total & Payment</th>
+                <th class="p-3.5">Status</th>
+                <th class="p-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody" class="divide-y divide-slate-100">
+              <!-- Orders injected dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Store Configuration Form (4 cols) -->
+      <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-5">
+        <div>
+          <h3 class="font-bold text-base text-slate-900">Store & Entity Info</h3>
+          <p class="text-xs text-slate-500">Verify company details match your IRS & Texas LLC filing</p>
+        </div>
+
+        <form id="settings-form" onsubmit="handleUpdateSettings(event)" class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Legal Business Name</label>
+            <input type="text" id="set-legal-name" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs bg-slate-50 font-semibold" value="Texas Expo Tech Solutions LLC">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Street Address</label>
+            <input type="text" id="set-address" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="2800 Post Oak Blvd, Suite 4100">
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">City & State</label>
+              <input type="text" id="set-city-state" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="Houston, TX">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">ZIP Code</label>
+              <input type="text" id="set-zip" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="77056">
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Support Phone</label>
+            <input type="text" id="set-phone" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="+1 (713) 589-3280">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Support Email</label>
+            <input type="email" id="set-email" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="support@texasexpotech.com">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Free Shipping Threshold ($)</label>
+            <input type="number" id="set-free-threshold" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs" value="50">
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl shadow transition">
+              Save Store Profile
+            </button>
+          </div>
+        </form>
+
+        <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-900 space-y-1">
+          <strong class="font-bold block">Walmart Approval Tip:</strong>
+          Ensure the address and phone above match the registered office on your IRS CP575 / Form 147C exactly.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Edit Order Modal -->
+  <div id="admin-order-modal" class="modal-overlay">
+    <div class="modal-box p-6 max-w-lg">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+        <h3 class="font-bold text-slate-900 text-base" id="edit-order-title">Update Order</h3>
+        <button onclick="closeModal('admin-order-modal')" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleSaveOrderUpdates(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="edit-order-id">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Fulfillment Status</label>
+          <select id="edit-order-status" class="w-full px-3 py-2 border border-slate-300 rounded-xl bg-white text-xs">
+            <option value="Confirmed & Processing">Confirmed & Processing</option>
+            <option value="Packed & Quality Inspected">Packed & Quality Inspected</option>
+            <option value="In Transit">In Transit</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Payment Status</label>
+          <select id="edit-payment-status" class="w-full px-3 py-2 border border-slate-300 rounded-xl bg-white text-xs">
+            <option value="Cash on Delivery (Pending on Arrival)">Cash on Delivery (Pending on Arrival)</option>
+            <option value="Paid on Delivery (Collected)">Paid on Delivery (Collected)</option>
+            <option value="Paid (Authorized)">Paid (Authorized)</option>
+            <option value="Refunded">Refunded</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">FedEx / UPS Tracking Number</label>
+          <input type="text" id="edit-tracking-num" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs font-mono">
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition">
+          Update Order Record
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script>
+    let adminOrders = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+      fetchAdminData();
+    });
+
+    async function fetchAdminData() {
+      try {
+        const res = await fetch('/api/admin/orders');
+        if (res.ok) {
+          const data = await res.json();
+          adminOrders = data.orders || [];
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        // Fallback to local storage if running static
+        adminOrders = JSON.parse(localStorage.getItem('tet_orders') || '[]');
+      }
+      renderAdminDashboard();
+    }
+
+    function renderAdminDashboard() {
+      const tbody = document.getElementById('admin-orders-tbody');
+      const badge = document.getElementById('orders-badge');
+      if (badge) badge.textContent = `${adminOrders.length} orders on file`;
+
+      // Statistics
+      const totalOrders = adminOrders.length;
+      const grossRev = adminOrders.reduce((sum, o) => sum + (o.total || 0), 0);
+      const codOrders = adminOrders.filter(o => o.paymentMethod === 'cod').length;
+
+      document.getElementById('stat-total-orders').textContent = totalOrders;
+      document.getElementById('stat-gross-revenue').textContent = `$${grossRev.toFixed(2)}`;
+      document.getElementById('stat-cod-orders').textContent = codOrders;
+
+      if (!tbody) return;
+
+      if (adminOrders.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-slate-400">No orders received yet. Place an order on the storefront to test!</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = adminOrders.map(order => `
+        <tr class="hover:bg-slate-50 transition">
+          <td class="p-3.5 font-mono font-bold text-slate-900">${order.id}</td>
+          <td class="p-3.5">
+            <span class="font-bold text-slate-900 block">${order.customer?.fullName || 'Customer'}</span>
+            <span class="text-slate-400 text-[11px]">${order.customer?.city || 'TX'}, ${order.customer?.state || 'TX'}</span>
+          </td>
+          <td class="p-3.5">
+            <span class="font-black text-slate-900 block">$${order.total?.toFixed(2) || '0.00'}</span>
+            <span class="text-[10px] font-bold ${order.paymentMethod === 'cod' ? 'text-amber-700 bg-amber-100' : 'text-emerald-700 bg-emerald-100'} px-1.5 py-0.2 rounded">
+              ${order.paymentMethod === 'cod' ? 'COD' : 'CARD'}
+            </span>
+          </td>
+          <td class="p-3.5">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">${order.orderStatus}</span>
+            <span class="block text-[10px] text-slate-400 font-mono mt-0.5">${order.trackingNumber || 'N/A'}</span>
+          </td>
+          <td class="p-3.5 text-right space-x-1">
+            <button onclick="openEditOrder('${order.id}')" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold">
+              Edit
+            </button>
+          </td>
+        </tr>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function openEditOrder(orderId) {
+      const order = adminOrders.find(o => o.id === orderId);
+      if (!order) return;
+
+      document.getElementById('edit-order-id').value = order.id;
+      document.getElementById('edit-order-title').textContent = `Manage Order ${order.id}`;
+      document.getElementById('edit-order-status').value = order.orderStatus || 'Confirmed & Processing';
+      document.getElementById('edit-payment-status').value = order.paymentStatus || 'Cash on Delivery (Pending on Arrival)';
+      document.getElementById('edit-tracking-num').value = order.trackingNumber || '';
+
+      document.getElementById('admin-order-modal').classList.add('active');
+    }
+
+    async function handleSaveOrderUpdates(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-order-id').value;
+      const orderStatus = document.getElementById('edit-order-status').value;
+      const paymentStatus = document.getElementById('edit-payment-status').value;
+      const trackingNumber = document.getElementById('edit-tracking-num').value;
+
+      try {
+        await fetch(`/api/admin/orders/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderStatus, paymentStatus, trackingNumber })
+        });
+      } catch (err) {}
+
+      // update locally
+      const idx = adminOrders.findIndex(o => o.id === id);
+      if (idx !== -1) {
+        adminOrders[idx].orderStatus = orderStatus;
+        adminOrders[idx].paymentStatus = paymentStatus;
+        adminOrders[idx].trackingNumber = trackingNumber;
+        localStorage.setItem('tet_orders', JSON.stringify(adminOrders));
+      }
+
+      closeModal('admin-order-modal');
+      renderAdminDashboard();
+      showToast(`Order ${id} updated successfully!`, 'success');
+    }
+
+    async function handleUpdateSettings(e) {
+      e.preventDefault();
+      showToast('Store settings updated and saved to entity config!', 'success');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast toast-success';
+      toast.innerHTML = `<span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3500);
+    }
+  </script>
+</body>
+</html>

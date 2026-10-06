@@ -1,0 +1,56 @@
+{
+  "storeName": "Texas Expo Tech Solutions LLC",
+  "legalName": "Texas Expo Tech Solutions LLC",
+  "tagline": "Modern Living, Tech & Home Solutions",
+  "ein": "XX-XXXXXXX (Verified Business Entity)",
+  "stateOfRegistration": "Texas, USA",
+  "address": {
+    "street": "2800 Post Oak Blvd, Suite 4100",
+    "city": "Houston",
+    "state": "TX",
+    "zip": "77056",
+    "country": "United States"
+  },
+  "contact": {
+    "phone": "+1 (713) 589-3280",
+    "email": "support@texasexpotech.com",
+    "inquiriesEmail": "sales@texasexpotech.com",
+    "hours": "Monday - Friday: 8:00 AM - 6:00 PM CST | Saturday: 9:00 AM - 3:00 PM CST"
+  },
+  "shipping": {
+    "freeShippingThreshold": 50,
+    "standardRate": 4.99,
+    "handlingTime": "1-2 Business Days",
+    "transitTime": "3-5 Business Days",
+    "carriers": ["FedEx Home Delivery", "UPS Ground", "USPS Priority Mail"],
+    "origin": "Houston & Dallas Logistics Hubs, TX"
+  },
+  "returnPolicy": {
+    "windowDays": 30,
+    "policyType": "Hassle-Free 30-Day Money Back Guarantee",
+    "restockingFee": "0% (Free Returns on defective/incorrect items)",
+    "refundProcessingTime": "3-5 Business Days"
+  },
+  "paymentMethods": {
+    "cod": {
+      "enabled": true,
+      "label": "Cash on Delivery (COD) / Pay on Arrival",
+      "description": "Pay cash directly upon delivery to your doorstep. Available across all eligible US domestic zip codes."
+    },
+    "creditCard": {
+      "enabled": true,
+      "label": "Credit / Debit Card (Visa, Mastercard, Amex, Discover)",
+      "description": "256-bit SSL encrypted secure card checkout."
+    },
+    "paypal": {
+      "enabled": true,
+      "label": "PayPal / PayPal Credit",
+      "description": "Fast and secure checkout via your PayPal balance or linked card."
+    }
+  },
+  "socials": {
+    "facebook": "https://facebook.com/texasexpotech",
+    "instagram": "https://instagram.com/texasexpotech",
+    "linkedin": "https://linkedin.com/company/texas-expo-tech-solutions"
+  }
+}

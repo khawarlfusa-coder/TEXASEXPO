@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texas Expo Tech Solutions LLC | Premium Apparel, Home, Devices & Kitchen</title>
+  <meta name="description" content="Texas Expo Tech Solutions LLC - Official American eCommerce portal for premium clothing, modern home decoration, smart devices and culinary kitchen accessories. Cash on Delivery available.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#0071dc', // Walmart blue
+              700: '#005bb5',
+              900: '#0A2540'  // Corporate Navy
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ==========================================
+       TOP ANNOUNCEMENT BAR (WALMART TRUST BAR)
+       ========================================== -->
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-center md:text-left">
+      <div class="flex items-center gap-4 flex-wrap justify-center">
+        <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> State of Texas Registered Entity
+        </span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span class="flex items-center gap-1.5 text-amber-300 font-medium">
+          <i data-lucide="banknote" class="w-3.5 h-3.5"></i> Cash on Delivery (COD) Available Nationwide
+        </span>
+        <span class="hidden sm:inline text-slate-600">|</span>
+        <span class="flex items-center gap-1.5 text-slate-300">
+          <i data-lucide="truck" class="w-3.5 h-3.5"></i> Free US Shipping Over $50
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4 text-[11px] text-slate-400">
+        <a href="tel:+17135893280" class="hover:text-white flex items-center gap-1 transition">
+          <i data-lucide="phone" class="w-3 h-3 text-blue-400"></i> +1 (713) 589-3280
+        </a>
+        <button onclick="openTrackingModal()" class="hover:text-blue-400 transition font-medium">
+          Track Order
+        </button>
+        <button onclick="openPolicyModal('returns')" class="hover:text-white transition">
+          30-Day Returns
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRIMARY NAVIGATION HEADER
+       ========================================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="/" class="flex items-center gap-3 shrink-0 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-slate-900 to-blue-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+            <i data-lucide="store" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight leading-none">Texas Expo Tech</span>
+              <span class="text-[10px] font-bold uppercase bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded">LLC</span>
+            </div>
+            <span class="text-[11px] text-slate-500 font-medium tracking-wide block mt-0.5">Commercial Distribution & Retail</span>
+          </div>
+        </a>
+
+        <!-- Desktop Search Bar -->
+        <div class="hidden lg:flex flex-1 max-w-md mx-6">
+          <div class="relative w-full">
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search 60+ SKUs across clothing, home, tech & kitchen..." 
+              class="w-full pl-10 pr-4 py-2.5 bg-slate-100/80 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition"
+            >
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+          </div>
+        </div>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Order Tracker Button -->
+          <button onclick="openTrackingModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+            <i data-lucide="package" class="w-4 h-4 text-blue-600"></i>
+            <span>Track Order</span>
+          </button>
+
+          <!-- Contact Us -->
+          <button onclick="openPolicyModal('contact')" class="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-blue-600 rounded-xl transition">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span>Support</span>
+          </button>
+
+          <!-- Cart Drawer Trigger Button -->
+          <button onclick="toggleCartDrawer(true)" class="relative p-2.5 sm:px-4 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs flex items-center gap-2 shadow-md shadow-blue-600/20 transition group">
+            <i data-lucide="shopping-cart" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+            <span class="hidden sm:inline">Cart</span>
+            <span class="cart-count-badge hidden bg-amber-400 text-slate-900 font-extrabold text-[11px] px-2 py-0.5 rounded-full ml-0.5">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Search Bar (Below Header on small screens) -->
+      <div class="lg:hidden pb-3">
+        <div class="relative w-full">
+          <input 
+            type="text" 
+            id="mobile-search-input" 
+            placeholder="Search SKUs, apparel, home decor, devices, kitchen..." 
+            class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          >
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Category Navigation Strip -->
+    <div class="bg-slate-100/90 border-t border-slate-200 text-xs py-2 px-4 overflow-x-auto">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-6 min-w-max">
+        <div class="flex items-center gap-4 sm:gap-6 font-semibold text-slate-600">
+          <button onclick="filterByCategory('all')" class="hover:text-blue-600 transition flex items-center gap-1.5">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> All Products (60)
+          </button>
+          <button onclick="filterByCategory('clothing')" class="hover:text-blue-600 transition flex items-center gap-1.5">
+            <i data-lucide="shirt" class="w-3.5 h-3.5"></i> Clothing & Apparel (15)
+          </button>
+          <button onclick="filterByCategory('home-decor')" class="hover:text-blue-600 transition flex items-center gap-1.5">
+            <i data-lucide="home" class="w-3.5 h-3.5"></i> Home Decoration (15)
+          </button>
+          <button onclick="filterByCategory('devices')" class="hover:text-blue-600 transition flex items-center gap-1.5">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5"></i> Devices & Accessories (15)
+          </button>
+          <button onclick="filterByCategory('kitchen')" class="hover:text-blue-600 transition flex items-center gap-1.5">
+            <i data-lucide="utensils" class="w-3.5 h-3.5"></i> Kitchen Accessories (15)
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4 text-slate-500 font-medium">
+          <button onclick="openPolicyModal('about')" class="hover:text-slate-900 transition">About Company</button>
+          <button onclick="openPolicyModal('shipping')" class="hover:text-slate-900 transition">Fulfillment</button>
+          <a href="/admin" class="hover:text-blue-600 text-blue-700 font-bold transition flex items-center gap-1">
+            <i data-lucide="lock" class="w-3 h-3"></i> Admin Portal
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO BANNER SECTION
+       ========================================== -->
+  <section class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white py-14 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- Ambient Background Lighting -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-300 backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+            Official Walmart Marketplace Catalog Ready &bull; 60 Premium SKUs
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Elevate Everyday Living with <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">Texas Expo Tech Solutions</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
+            America's curated destination for high-performance apparel, modern home decor, cutting-edge smart accessories, and chef-grade kitchen essentials. Dispatched directly from our Texas fulfillment center with nationwide <strong>Cash on Delivery (COD)</strong>.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#products-section" class="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-blue-600/30 transition flex items-center gap-2">
+              <span>Browse Catalog (60 Items)</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <button onclick="openPolicyModal('returns')" class="px-5 py-3.5 bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white text-xs font-bold rounded-xl transition flex items-center gap-2">
+              <i data-lucide="rotate-ccw" class="w-4 h-4 text-emerald-400"></i>
+              <span>30-Day Return Guarantee</span>
+            </button>
+          </div>
+
+          <!-- Trust Feature Badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-slate-800/80 text-xs">
+            <div class="flex items-center gap-2 text-slate-300">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span>Verified LLC Entity</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <i data-lucide="banknote" class="w-4 h-4 text-amber-400 shrink-0"></i>
+              <span>Cash on Delivery</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <i data-lucide="truck" class="w-4 h-4 text-blue-400 shrink-0"></i>
+              <span>FedEx & UPS Ground</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-300">
+              <i data-lucide="award" class="w-4 h-4 text-indigo-400 shrink-0"></i>
+              <span>Walmart Quality Standard</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Featured Visual Showcase -->
+        <div class="lg:col-span-5 relative">
+          <div class="bg-gradient-to-tr from-slate-900 to-slate-800 border border-slate-700/60 rounded-3xl p-6 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-700/60 pb-4 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+              </div>
+              <span class="text-[11px] font-mono font-bold text-slate-400">Texas Inventory Hub</span>
+            </div>
+
+            <!-- Mini Showcase Grid -->
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="filterByCategory('clothing')" class="cursor-pointer group relative rounded-xl overflow-hidden aspect-square border border-slate-700">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-2.5">
+                  <span class="text-xs font-bold text-white">Apparel (15)</span>
+                </div>
+              </div>
+
+              <div onclick="filterByCategory('home-decor')" class="cursor-pointer group relative rounded-xl overflow-hidden aspect-square border border-slate-700">
+                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-2.5">
+                  <span class="text-xs font-bold text-white">Home Decor (15)</span>
+                </div>
+              </div>
+
+              <div onclick="filterByCategory('devices')" class="cursor-pointer group relative rounded-xl overflow-hidden aspect-square border border-slate-700">
+                <img src="https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-2.5">
+                  <span class="text-xs font-bold text-white">Devices & Audio (15)</span>
+                </div>
+              </div>
+
+              <div onclick="filterByCategory('kitchen')" class="cursor-pointer group relative rounded-xl overflow-hidden aspect-square border border-slate-700">
+                <img src="https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-2.5">
+                  <span class="text-xs font-bold text-white">Kitchenware (15)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
+              <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i> All 60 SKUs Available for COD
+              </span>
+              <span class="font-mono text-slate-500">HQ: Houston, TX</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOUR CORE CATEGORIES HIGHLIGHT CARDS
+       ========================================== -->
+  <section class="py-12 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-600 block">Walmart Ready Inventory</span>
+          <h2 class="text-2xl font-bold text-slate-900">Explore Core Product Categories</h2>
+        </div>
+        <span class="text-xs font-medium text-slate-500">15 Curated SKUs Per Category</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Category Card 1 -->
+        <div onclick="filterByCategory('clothing')" class="cursor-pointer group p-5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+            <i data-lucide="shirt" class="w-6 h-6"></i>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold text-slate-900 group-hover:text-blue-600 transition">Clothing & Apparel</h3>
+            <span class="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">15 Items</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">Supima cotton tees, athletic wear, cashmere knits & rugged denim trucker jackets.</p>
+        </div>
+
+        <!-- Category Card 2 -->
+        <div onclick="filterByCategory('home-decor')" class="cursor-pointer group p-5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+            <i data-lucide="home" class="w-6 h-6"></i>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold text-slate-900 group-hover:text-amber-600 transition">Home Decoration</h3>
+            <span class="text-xs font-bold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">15 Items</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">Matte ceramic vases, ambient RGB corner lamps, Moroccan rugs & velvet accents.</p>
+        </div>
+
+        <!-- Category Card 3 -->
+        <div onclick="filterByCategory('devices')" class="cursor-pointer group p-5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+            <i data-lucide="smartphone" class="w-6 h-6"></i>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition">Devices & Tech</h3>
+            <span class="text-xs font-bold bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full">15 Items</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">15W MagSafe stations, ANC Bluetooth headphones, 65W power banks & USB hubs.</p>
+        </div>
+
+        <!-- Category Card 4 -->
+        <div onclick="filterByCategory('kitchen')" class="cursor-pointer group p-5 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </div>
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-bold text-slate-900 group-hover:text-emerald-600 transition">Kitchen Accessories</h3>
+            <span class="text-xs font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">15 Items</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">Damascus chef knives, 0.1g digital scales, acacia utensil sets & cold brew pitchers.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MAIN PRODUCTS CATALOG SECTION
+       ========================================== -->
+  <main id="products-section" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    
+    <!-- Controls Header -->
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-200 mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900">Featured Store Products</h2>
+        <p id="product-count-display" class="text-xs text-slate-500 mt-0.5">Showing 60 products</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+        <!-- Sort Select -->
+        <div class="flex items-center gap-2 text-xs">
+          <label for="sort-select" class="font-semibold text-slate-600">Sort by:</label>
+          <select id="sort-select" class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm">
+            <option value="featured">Featured (Walmart Picks)</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="name">Alphabetical</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills Bar -->
+    <div id="category-pills-container" class="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Product Grid (60 Items) -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- ==========================================
+       WALMART MERCHANT TRUST ASSURANCE BANNER
+       ========================================== -->
+  <section class="bg-white border-t border-b border-slate-200 py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600">Merchant Reliability</span>
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Why Customers & Retail Platforms Trust Us</h3>
+        <p class="text-xs text-slate-500 mt-2">Texas Expo Tech Solutions LLC meets all stringent guidelines for domestic US commerce.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+            <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-xs">30-Day Money Back</h4>
+            <p class="text-[11px] text-slate-500 mt-1">Hassle-free 30-day return policy compliant with Walmart Marketplace seller guidelines.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+            <i data-lucide="banknote" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-xs">Cash on Delivery (COD)</h4>
+            <p class="text-[11px] text-slate-500 mt-1">Pay with physical cash at your doorstep upon receiving your package from FedEx / UPS.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+            <i data-lucide="truck" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-xs">Rapid 24H Dispatch</h4>
+            <p class="text-[11px] text-slate-500 mt-1">Domestic Texas fulfillment center handles orders within 1-2 business days with scannable tracking.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-slate-900 text-xs">Verified US Entity</h4>
+            <p class="text-[11px] text-slate-500 mt-1">State of Texas registered LLC with Houston commercial headquarters and live phone support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CORPORATE FOOTER
+       ========================================== -->
+  <footer class="bg-slate-950 text-slate-300 pt-16 pb-8 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Corporate Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+              <i data-lucide="store" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <span class="font-bold text-base text-white block">Texas Expo Tech Solutions LLC</span>
+              <span class="text-[11px] text-slate-400">Commercial American Retailer</span>
+            </div>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-xs max-w-sm">
+            Incorporated in the State of Texas. Supplying high-quality clothing, home decor, electronics accessories, and kitchen essentials nationwide with rapid logistics and Cash on Delivery assurance.
+          </p>
+
+          <div class="space-y-1.5 text-xs text-slate-400 pt-2">
+            <p class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-blue-400 shrink-0"></i>
+              <span>2800 Post Oak Blvd, Suite 4100, Houston, TX 77056</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-blue-400 shrink-0"></i>
+              <a href="tel:+17135893280" class="hover:text-white transition">+1 (713) 589-3280 (Mon-Fri 8am-6pm CST)</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-blue-400 shrink-0"></i>
+              <a href="mailto:support@texasexpotech.com" class="hover:text-white transition">support@texasexpotech.com</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div>
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Product Catalog</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><button onclick="filterByCategory('clothing')" class="hover:text-white transition">Clothing & Apparel (15)</button></li>
+            <li><button onclick="filterByCategory('home-decor')" class="hover:text-white transition">Home Decoration (15)</button></li>
+            <li><button onclick="filterByCategory('devices')" class="hover:text-white transition">Devices & Tech (15)</button></li>
+            <li><button onclick="filterByCategory('kitchen')" class="hover:text-white transition">Kitchen Accessories (15)</button></li>
+            <li><button onclick="filterByCategory('all')" class="hover:text-white transition">All 60 SKUs</button></li>
+          </ul>
+        </div>
+
+        <!-- Customer Services -->
+        <div>
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Customer Service</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><button onclick="openTrackingModal()" class="hover:text-white transition text-blue-400 font-semibold">Live Order Tracking</button></li>
+            <li><button onclick="openPolicyModal('returns')" class="hover:text-white transition">30-Day Return Policy</button></li>
+            <li><button onclick="openPolicyModal('shipping')" class="hover:text-white transition">Shipping & Delivery Rates</button></li>
+            <li><button onclick="openPolicyModal('contact')" class="hover:text-white transition">Customer Support Desk</button></li>
+            <li><button onclick="openPolicyModal('about')" class="hover:text-white transition">About Texas Expo Tech</button></li>
+          </ul>
+        </div>
+
+        <!-- Walmart Compliance & Legal -->
+        <div>
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-3">Compliance & Legal</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><button onclick="openPolicyModal('terms')" class="hover:text-white transition">Terms of Service</button></li>
+            <li><button onclick="openPolicyModal('privacy')" class="hover:text-white transition">Privacy Policy (CCPA)</button></li>
+            <li><button onclick="openPolicyModal('returns')" class="hover:text-white transition">Refund & Restocking Fees</button></li>
+            <li><a href="/admin" class="hover:text-blue-400 transition text-slate-400 flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> Private Admin Portal</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Payment Trust Icons -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <p>&copy; 2026 Texas Expo Tech Solutions LLC. All rights reserved. Registered in Texas, USA.</p>
+
+        <div class="flex items-center gap-3">
+          <span class="text-emerald-400 font-bold flex items-center gap-1">
+            <i data-lucide="banknote" class="w-3.5 h-3.5"></i> Cash on Delivery Accepted
+          </span>
+          <span>&bull;</span>
+          <span>Visa</span>
+          <span>&bull;</span>
+          <span>Mastercard</span>
+          <span>&bull;</span>
+          <span>Amex</span>
+          <span>&bull;</span>
+          <span>PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       CART DRAWER (SLIDE-OUT)
+       ========================================== -->
+  <div id="cart-backdrop" class="drawer-backdrop" onclick="toggleCartDrawer(false)"></div>
+  <aside id="cart-drawer" class="drawer-panel">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-blue-600"></i>
+        <h3 class="font-bold text-slate-900 text-sm">Shopping Cart</h3>
+        <span class="cart-count-badge bg-blue-600 text-white font-bold text-xs px-2 py-0.5 rounded-full">0</span>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress Bar -->
+    <div class="bg-blue-50/70 p-3 border-b border-blue-100 text-xs">
+      <div id="shipping-progress-msg" class="mb-2 text-slate-700 font-medium">
+        Add <strong class="text-slate-900">$50.00</strong> more to unlock <strong>FREE Shipping</strong>!
+      </div>
+      <div class="w-full bg-blue-200/60 rounded-full h-2 overflow-hidden">
+        <div id="shipping-progress-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Items List -->
+    <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Items dynamically populated -->
+    </div>
+
+    <!-- Cart Footer & Checkout Button -->
+    <div class="p-4 border-t border-slate-200 bg-white space-y-3">
+      <div class="flex items-center justify-between text-xs text-slate-500">
+        <span>Payment Method</span>
+        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">Cash on Delivery Available</span>
+      </div>
+
+      <div class="flex items-center justify-between text-base font-black text-slate-900 pt-1">
+        <span>Estimated Subtotal:</span>
+        <span id="cart-subtotal-amount">$0.00</span>
+      </div>
+
+      <button onclick="openCheckoutModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-blue-600/20 text-xs flex items-center justify-center gap-2 transition">
+        <span>Proceed to Checkout (COD)</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+
+      <button onclick="toggleCartDrawer(false)" class="w-full text-center text-xs text-slate-500 hover:text-slate-800 font-medium py-1">
+        Continue Shopping
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       CHECKOUT MODAL (WITH CASH ON DELIVERY FOCUS)
+       ========================================== -->
+  <div id="checkout-modal" class="modal-overlay">
+    <div class="modal-box p-6 md:p-8 max-w-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600">Secure Checkout</span>
+          <h3 class="text-xl font-bold text-slate-900">Texas Expo Tech Solutions Order Form</h3>
+        </div>
+        <button onclick="closeModal('checkout-modal')" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Payment Method Switcher Tabs -->
+      <div class="mb-6">
+        <label class="block text-xs font-bold text-slate-700 mb-2">Select Payment Method:</label>
+        <div class="flex items-center gap-2">
+          <button onclick="setPaymentMethod('cod')" data-method="cod" class="payment-tab-btn flex-1 py-3 px-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-900 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="banknote" class="w-4 h-4 text-emerald-600"></i> Cash on Delivery (COD)
+          </button>
+          <button onclick="setPaymentMethod('card')" data-method="card" class="payment-tab-btn flex-1 py-3 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-slate-50 transition">
+            <i data-lucide="credit-card" class="w-4 h-4"></i> Credit / Debit Card
+          </button>
+          <button onclick="setPaymentMethod('paypal')" data-method="paypal" class="payment-tab-btn flex-1 py-3 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-medium text-xs flex items-center justify-center gap-1.5 hover:bg-slate-50 transition">
+            <i data-lucide="wallet" class="w-4 h-4"></i> PayPal
+          </button>
+        </div>
+      </div>
+
+      <!-- COD Explanatory Highlight -->
+      <div id="cod-payment-notice" class="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 mb-6 text-xs text-emerald-900 flex items-start gap-3">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>
+        <div>
+          <strong class="font-bold block mb-0.5">Cash on Delivery (Pay on Arrival) Selected</strong>
+          No online card required today. Your order will be packed at our Texas warehouse and delivered by FedEx or UPS. Simply hand the cash payment to the driver upon delivery.
+        </div>
+      </div>
+
+      <!-- Card Form (if card tab clicked) -->
+      <div id="card-payment-form" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6 space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Card Number</label>
+          <input type="text" placeholder="4000 1234 5678 9010" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Expiration (MM/YY)</label>
+            <input type="text" placeholder="12/28" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Security CVC</label>
+            <input type="text" placeholder="382" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs bg-white">
+          </div>
+        </div>
+      </div>
+
+      <!-- PayPal Notice (if PayPal clicked) -->
+      <div id="paypal-payment-notice" class="hidden bg-blue-50 border border-blue-200 rounded-xl p-3.5 mb-6 text-xs text-blue-900">
+        Clicking Place Order will authorize your order via PayPal sandbox simulation.
+      </div>
+
+      <!-- Shipping Form -->
+      <form onsubmit="handlePlaceOrder(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Full Legal Name *</label>
+          <input type="text" id="cust-name" required placeholder="e.g. Marcus Vance" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Email Address (For Invoicing) *</label>
+            <input type="email" id="cust-email" required placeholder="marcus.v@example.com" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Phone Number (For Delivery Driver) *</label>
+            <input type="tel" id="cust-phone" required placeholder="+1 (713) 555-0192" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Street Address *</label>
+          <input type="text" id="cust-address" required placeholder="e.g. 1024 Prairie View Terrace, Apt 3B" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">City *</label>
+            <input type="text" id="cust-city" required placeholder="Houston" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">State *</label>
+            <select id="cust-state" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs bg-white focus:ring-2 focus:ring-blue-500">
+              <option value="TX" selected>Texas (TX)</option>
+              <option value="CA">California (CA)</option>
+              <option value="FL">Florida (FL)</option>
+              <option value="NY">New York (NY)</option>
+              <option value="IL">Illinois (IL)</option>
+              <option value="OK">Oklahoma (OK)</option>
+              <option value="GA">Georgia (GA)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">ZIP Code *</label>
+            <input type="text" id="cust-zip" required placeholder="77002" class="w-full px-3 py-2.5 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+
+        <!-- Coupon Code Box -->
+        <div class="pt-2 flex gap-2">
+          <input type="text" id="coupon-code-input" placeholder="Promo code (try: WELCOME10)" class="flex-1 px-3 py-2 border border-slate-300 rounded-xl text-xs uppercase">
+          <button type="button" onclick="applyCoupon()" class="px-4 py-2 bg-slate-800 text-white font-bold rounded-xl text-xs hover:bg-slate-900 transition">
+            Apply
+          </button>
+        </div>
+
+        <!-- Order Summary Box -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2 mt-4">
+          <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-2">Order Review</h4>
+          
+          <div id="checkout-items-summary" class="max-h-36 overflow-y-auto space-y-1 pr-1">
+            <!-- Populated via JS -->
+          </div>
+
+          <div class="border-t border-slate-200 pt-2 space-y-1 text-slate-600">
+            <div class="flex justify-between">
+              <span>Subtotal:</span>
+              <span id="checkout-subtotal">$0.00</span>
+            </div>
+            <div id="checkout-discount-row" class="flex justify-between text-emerald-600 font-bold hidden">
+              <span>Promo Discount (10%):</span>
+              <span id="checkout-discount">-$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Fulfillment & Shipping:</span>
+              <span id="checkout-shipping">FREE</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Sales Tax (8.25% TX):</span>
+              <span id="checkout-tax">$0.00</span>
+            </div>
+            <div class="flex justify-between text-sm font-black text-slate-900 pt-2 border-t border-slate-200">
+              <span>Final Total (Due on Delivery):</span>
+              <span id="checkout-total">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" id="place-order-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 px-6 rounded-xl shadow-lg shadow-emerald-600/20 text-sm flex items-center justify-center gap-2 transition">
+          <i data-lucide="check-circle" class="w-4 h-4"></i> Place Order (Cash on Delivery)
+        </button>
+
+        <p class="text-[10px] text-center text-slate-400">
+          By clicking Place Order, you agree to our 30-Day Return Policy & Terms of Service. Dispatched from Houston Logistics Center.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       ORDER CONFIRMATION / PRINTABLE INVOICE MODAL
+       ========================================== -->
+  <div id="confirmation-modal" class="modal-overlay">
+    <div class="modal-box p-0 max-w-2xl">
+      <div class="p-4 bg-slate-900 text-white flex items-center justify-between">
+        <span class="text-xs font-bold font-mono">TEXAS EXPO TECH SOLUTIONS LLC &bull; INVOICE</span>
+        <button onclick="closeModal('confirmation-modal')" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="confirmation-modal-content">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       LIVE ORDER TRACKING MODAL
+       ========================================== -->
+  <div id="tracking-modal" class="modal-overlay">
+    <div class="modal-box p-6 md:p-8 max-w-xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-blue-600">FedEx & UPS Carrier Portal</span>
+          <h3 class="text-xl font-bold text-slate-900">Live Package Tracking</h3>
+        </div>
+        <button onclick="closeModal('tracking-modal')" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex gap-2 mb-6">
+        <input 
+          type="text" 
+          id="tracking-query-input" 
+          placeholder="Enter Order ID (e.g. TET-94812) or FX-78..." 
+          class="flex-1 px-3 py-2.5 border border-slate-300 rounded-xl text-xs uppercase focus:ring-2 focus:ring-blue-600"
+        >
+        <button onclick="trackOrderSubmit()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
+          <i data-lucide="search" class="w-3.5 h-3.5"></i> Track
+        </button>
+      </div>
+
+      <div class="text-[11px] text-slate-500 mb-4 bg-slate-100 p-2.5 rounded-lg flex items-center justify-between">
+        <span>Try Demo ID: <button onclick="openTrackingModal('TET-94812')" class="text-blue-600 font-mono font-bold hover:underline">TET-94812</button></span>
+        <span>Origin: <strong>Houston Hub, TX</strong></span>
+      </div>
+
+      <div id="tracking-results-area">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PRODUCT QUICK VIEW MODAL
+       ========================================== -->
+  <div id="quick-view-modal" class="modal-overlay">
+    <div class="modal-box max-w-3xl p-0 relative">
+      <button onclick="closeModal('quick-view-modal')" class="absolute top-4 right-4 z-20 bg-white/80 backdrop-blur-sm p-1.5 rounded-full text-slate-500 hover:text-slate-900 shadow">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="quick-view-content">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       POLICY & COMPLIANCE MODAL (Walmart Requirements)
+       ========================================== -->
+  <div id="policy-modal" class="modal-overlay">
+    <div class="modal-box max-w-2xl p-6 md:p-8">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+        <div>
+          <h3 id="policy-modal-title" class="text-xl font-bold text-slate-900">Policy Title</h3>
+          <p id="policy-modal-subtitle" class="text-xs text-slate-500 mt-0.5">Policy Subtitle</p>
+        </div>
+        <button onclick="closeModal('policy-modal')" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="policy-modal-body" class="max-h-[70vh] overflow-y-auto pr-1">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

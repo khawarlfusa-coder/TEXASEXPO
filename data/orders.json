@@ -1,0 +1,207 @@
+[
+  {
+    "id": "TET-19009",
+    "createdAt": "2026-10-06T07:59:14.680Z",
+    "customer": {
+      "fullName": "Alexander Hayes",
+      "email": "a.hayes@example.com",
+      "phone": "+1 (832) 555-0182",
+      "address": "1200 Travis St, Apt 18A",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77002"
+    },
+    "items": [
+      {
+        "id": "clo-01",
+        "quantity": 2,
+        "sku": "TXET-CLO-101",
+        "price": 28.5,
+        "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+        "title": "Men's Premium Heavyweight Supima Cotton Classic Crewneck Tee"
+      }
+    ],
+    "subtotal": 57,
+    "discount": 0,
+    "shipping": 0,
+    "tax": 4.7,
+    "total": 61.7,
+    "paymentMethod": "cod",
+    "paymentStatus": "Cash on Delivery (Pending on Arrival)",
+    "orderStatus": "Confirmed & Processing",
+    "carrier": "FedEx Home Delivery",
+    "trackingNumber": "FX-788365423351",
+    "timeline": [
+      {
+        "status": "Order Placed & Verified",
+        "time": "2026-10-06 07:59",
+        "location": "Online Verification Hub",
+        "done": true
+      },
+      {
+        "status": "Sent to Texas Fulfillment Depot",
+        "time": "In Progress",
+        "location": "Houston Logistics Facility",
+        "done": true
+      },
+      {
+        "status": "Quality Packing & Barcode Scan",
+        "time": "Pending",
+        "location": "Fulfillment Center #1",
+        "done": false
+      },
+      {
+        "status": "FedEx Courier Pickup",
+        "time": "Scheduled",
+        "location": "Houston, TX",
+        "done": false
+      },
+      {
+        "status": "Out for Delivery (Cash on Arrival)",
+        "time": "Expected 3-5 Days",
+        "location": "Local Customer Depot",
+        "done": false
+      }
+    ]
+  },
+  {
+    "id": "TET-94812",
+    "createdAt": "2026-10-04T14:32:00.000Z",
+    "customer": {
+      "fullName": "Marcus Sterling",
+      "email": "m.sterling@example.com",
+      "phone": "+1 (832) 419-8230",
+      "address": "4520 Westheimer Rd, Apt 12B",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77027"
+    },
+    "items": [
+      {
+        "id": "dev-01",
+        "title": "3-in-1 Foldable Magnetic Wireless Charging Station 15W Fast Charge",
+        "sku": "TXET-DEV-301",
+        "price": 39.99,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "kit-03",
+        "title": "Ultra-Precision Digital Food & Coffee Kitchen Scale (0.1g Accuracy)",
+        "sku": "TXET-KIT-403",
+        "price": 24.5,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "subtotal": 64.49,
+    "discount": 0,
+    "shipping": 0,
+    "tax": 5.32,
+    "total": 69.81,
+    "paymentMethod": "cod",
+    "paymentStatus": "Pending on Delivery",
+    "orderStatus": "In Transit",
+    "carrier": "FedEx Home Delivery",
+    "trackingNumber": "FX-782194829103",
+    "timeline": [
+      {
+        "status": "Order Placed",
+        "time": "2026-10-04 09:32 AM",
+        "location": "Houston, TX",
+        "done": true
+      },
+      {
+        "status": "Packed & Quality Inspected",
+        "time": "2026-10-04 01:15 PM",
+        "location": "Texas Expo Logistics Hub #1",
+        "done": true
+      },
+      {
+        "status": "Picked up by FedEx",
+        "time": "2026-10-04 05:40 PM",
+        "location": "Houston FedEx Depot",
+        "done": true
+      },
+      {
+        "status": "In Transit to Destination",
+        "time": "2026-10-05 06:12 AM",
+        "location": "DFW Regional Sort Facility",
+        "done": true
+      },
+      {
+        "status": "Out for Delivery (Cash on Arrival)",
+        "time": "Expected Tomorrow 11:00 AM",
+        "location": "Houston Local Hub",
+        "done": false
+      }
+    ]
+  },
+  {
+    "id": "TET-94813",
+    "createdAt": "2026-10-03T18:15:00.000Z",
+    "customer": {
+      "fullName": "Sarah Jenkins",
+      "email": "sarah.j.austin@example.com",
+      "phone": "+1 (512) 674-9021",
+      "address": "1104 S Congress Ave",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78704"
+    },
+    "items": [
+      {
+        "id": "hme-01",
+        "title": "Minimalist Matte Ceramic Geometric Vase Set (3-Piece Scandinavian Design)",
+        "sku": "TXET-HME-201",
+        "price": 42.99,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "clo-01",
+        "title": "Men's Premium Heavyweight Supima Cotton Classic Crewneck Tee",
+        "sku": "TXET-CLO-101",
+        "price": 29.99,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "subtotal": 72.98,
+    "discount": 7.3,
+    "shipping": 0,
+    "tax": 6.02,
+    "total": 71.7,
+    "paymentMethod": "cod",
+    "paymentStatus": "Paid on Delivery",
+    "orderStatus": "Delivered",
+    "carrier": "UPS Ground",
+    "trackingNumber": "1Z9999999999999999",
+    "timeline": [
+      {
+        "status": "Order Placed",
+        "time": "2026-10-03 06:15 PM",
+        "location": "Austin, TX",
+        "done": true
+      },
+      {
+        "status": "Packed & Labeled",
+        "time": "2026-10-03 08:30 PM",
+        "location": "Texas Expo Logistics Hub #1",
+        "done": true
+      },
+      {
+        "status": "UPS Pickup",
+        "time": "2026-10-04 09:10 AM",
+        "location": "Houston UPS Hub",
+        "done": true
+      },
+      {
+        "status": "Delivered & Cash Collected",
+        "time": "2026-10-05 11:45 AM",
+        "location": "Austin, TX",
+        "done": true
+      }
+    ]
+  }
+]
