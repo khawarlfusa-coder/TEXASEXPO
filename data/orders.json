@@ -1,5 +1,70 @@
 [
   {
+    "id": "TET-95384",
+    "createdAt": "2026-10-07T01:43:56.688Z",
+    "customer": {
+      "fullName": "Bilal Ahmed",
+      "email": "bilal@example.com",
+      "phone": "+1 (832) 555-0199",
+      "address": "5000 Westheimer Rd",
+      "city": "Houston",
+      "state": "TX",
+      "zip": "77056"
+    },
+    "items": [
+      {
+        "id": "clo-01",
+        "quantity": 1,
+        "sku": "TXET-CLO-101",
+        "price": 28.5,
+        "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518",
+        "title": "Men's Premium Heavyweight Supima Cotton Classic Crewneck Tee"
+      }
+    ],
+    "subtotal": 28.5,
+    "discount": 0,
+    "shipping": 4.99,
+    "tax": 2.35,
+    "total": 35.84,
+    "paymentMethod": "cod",
+    "paymentStatus": "Cash on Delivery (Pending on Arrival)",
+    "orderStatus": "Confirmed & Processing",
+    "carrier": "FedEx Home Delivery",
+    "trackingNumber": "FX-782769196525",
+    "timeline": [
+      {
+        "status": "Order Placed & Verified",
+        "time": "2026-10-07 01:43",
+        "location": "Online Verification Hub",
+        "done": true
+      },
+      {
+        "status": "Sent to Texas Fulfillment Depot",
+        "time": "In Progress",
+        "location": "Houston Logistics Facility",
+        "done": true
+      },
+      {
+        "status": "Quality Packing & Barcode Scan",
+        "time": "Pending",
+        "location": "Fulfillment Center #1",
+        "done": false
+      },
+      {
+        "status": "FedEx Courier Pickup",
+        "time": "Scheduled",
+        "location": "Houston, TX",
+        "done": false
+      },
+      {
+        "status": "Out for Delivery (Cash on Arrival)",
+        "time": "Expected 3-5 Days",
+        "location": "Local Customer Depot",
+        "done": false
+      }
+    ]
+  },
+  {
     "id": "TET-19009",
     "createdAt": "2026-10-06T07:59:14.680Z",
     "customer": {

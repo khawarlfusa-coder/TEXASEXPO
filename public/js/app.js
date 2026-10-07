@@ -835,8 +835,8 @@ function displayOrderConfirmation(order) {
           <div>
             <h5 class="font-bold text-slate-800 mb-1">Fulfilled By:</h5>
             <p class="font-semibold text-slate-900">Texas Expo Tech Solutions LLC</p>
-            <p>2800 Post Oak Blvd, Suite 4100</p>
-            <p>Houston, TX 77056, United States</p>
+            <p>603 Landon Samuel Loop</p>
+            <p>Pflugerville, TX 78660, United States</p>
             <p class="text-slate-500 mt-1">Support: support@texasexpotech.com</p>
           </div>
         </div>
@@ -997,7 +997,7 @@ const POLICIES = {
         <p>Texas Expo Tech Solutions LLC provides prepaid FedEx or UPS return shipping labels for all items verified as damaged, defective, or incorrect. For elective customer returns (e.g. change of mind), standard return shipping labels are provided at commercial discounted rates.</p>
 
         <h4 class="text-sm font-bold text-slate-900">4. Fast Refund Processing</h4>
-        <p>Once your returned package arrives at our Houston logistics center, our inspection team verifies the contents within <strong>24 to 48 hours</strong>. Refunds are issued directly to your original payment method or via check/wire within <strong>3 to 5 business days</strong>.</p>
+        <p>Once your returned package arrives at our Texas logistics center (Pflugerville, TX), our inspection team verifies the contents within <strong>24 to 48 hours</strong>. Refunds are issued directly to your original payment method or via check/wire within <strong>3 to 5 business days</strong>.</p>
 
         <h4 class="text-sm font-bold text-slate-900">5. Cash on Delivery (COD) Returns & Refunds</h4>
         <p>If your order was completed via Cash on Delivery, your refund will be disbursed electronically via direct ACH bank transfer, Zelle, or company check upon receipt and inspection of the returned merchandise.</p>
@@ -1010,7 +1010,7 @@ const POLICIES = {
     content: `
       <div class="space-y-4 text-xs text-slate-700 leading-relaxed">
         <div class="bg-emerald-50 border-l-4 border-emerald-600 p-3 rounded-r-lg text-emerald-900 font-medium">
-          All orders are dispatched directly from our Texas fulfillment center: <strong>2800 Post Oak Blvd, Suite 4100, Houston, TX 77056</strong>.
+          All orders are dispatched directly from our Texas fulfillment center: <strong>603 Landon Samuel Loop, Pflugerville, TX 78660</strong>.
         </div>
 
         <h4 class="text-sm font-bold text-slate-900">1. Order Processing Time</h4>
@@ -1082,7 +1082,7 @@ const POLICIES = {
       <div class="space-y-4 text-xs text-slate-700 leading-relaxed">
         <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-lg text-blue-900">
           <p class="font-bold text-sm mb-1">Company Overview</p>
-          <p><strong>Texas Expo Tech Solutions LLC</strong> is an incorporated US enterprise headquartered in Houston, Texas. We specialize in curating high-grade apparel, modern living & home decoration accents, smart mobile & desktop devices, and professional culinary kitchen accessories.</p>
+          <p><strong>Texas Expo Tech Solutions LLC</strong> is an incorporated US enterprise headquartered in Pflugerville, Texas. We specialize in curating high-grade apparel, modern living & home decoration accents, smart mobile & desktop devices, and professional culinary kitchen accessories.</p>
         </div>
 
         <h4 class="text-sm font-bold text-slate-900">Our Mission</h4>
@@ -1090,9 +1090,9 @@ const POLICIES = {
 
         <h4 class="text-sm font-bold text-slate-900">Operational Infrastructure</h4>
         <ul class="list-disc pl-5 space-y-1">
-          <li><strong>Corporate Headquarters:</strong> 2800 Post Oak Blvd, Suite 4100, Houston, TX 77056</li>
-          <li><strong>Logistics Facilities:</strong> Houston & DFW Texas Regional Warehouses</li>
-          <li><strong>Direct Customer Support:</strong> Mon - Fri 8am - 6pm CST (+1 713-589-3280)</li>
+          <li><strong>Corporate Headquarters:</strong> 603 Landon Samuel Loop, Pflugerville, TX 78660</li>
+          <li><strong>Logistics Facilities:</strong> Pflugerville & DFW Texas Regional Warehouses</li>
+          <li><strong>Direct Customer Support:</strong> Mon - Fri 8am - 6pm CST (+1 763-218-6693)</li>
           <li><strong>Verification Status:</strong> Registered State of Texas LLC & Walmart Marketplace Applicant</li>
         </ul>
       </div>
@@ -1108,12 +1108,12 @@ const POLICIES = {
             <div>
               <span class="font-bold text-slate-900 block text-sm">Corporate Headquarters</span>
               <p class="text-slate-600">Texas Expo Tech Solutions LLC</p>
-              <p class="text-slate-600">2800 Post Oak Blvd, Suite 4100</p>
-              <p class="text-slate-600">Houston, TX 77056, United States</p>
+              <p class="text-slate-600">603 Landon Samuel Loop</p>
+              <p class="text-slate-600">Pflugerville, TX 78660, United States</p>
             </div>
             <div>
               <span class="font-bold text-slate-900 block">Telephone Support</span>
-              <p class="text-blue-600 font-bold">+1 (713) 589-3280</p>
+              <p class="text-blue-600 font-bold">+1 (763) 218-6693</p>
               <p class="text-slate-400 text-[11px]">Mon - Fri: 8:00 AM - 6:00 PM CST</p>
             </div>
             <div>

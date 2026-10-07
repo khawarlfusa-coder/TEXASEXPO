@@ -12,8 +12,8 @@ Walmart verifies that your business data on your application matches **100% iden
 | Field | Must Match On: | Texas Expo Tech Solutions LLC Storefront Setup |
 |---|---|---|
 | **Legal Business Name** | IRS Form CP575 / 147C, Bank Statement, Header & Footer | **Texas Expo Tech Solutions LLC** |
-| **Physical Address** | State Filing / Registered Office / Utility Bill | **2800 Post Oak Blvd, Suite 4100, Houston, TX 77056** |
-| **Phone Number** | Official Business Line (US Number) | **+1 (713) 589-3280** *(or your designated business number)* |
+| **Physical Address** | State Filing / Registered Office / Utility Bill | **603 Landon Samuel Loop, Pflugerville, TX 78660** |
+| **Phone Number** | Official Business Line (US Number) | **+1 (763) 218-6693** *(Official business number)* |
 | **Support Email** | Custom Domain Email (e.g. `support@yourdomain.com`) | **support@texasexpotech.com** |
 
 > **Tip:** You can update the physical address, phone number, and email at any time inside the built-in **Admin Dashboard (`/admin`)** or by editing `data/settings.json`.
