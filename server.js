@@ -91,11 +91,11 @@ app.get('/api/categories', (req, res) => {
   res.json({ success: true, categories: CATEGORIES });
 });
 
-// 4. Create New Order (Cash on Delivery, Credit Card, PayPal)
+// 4. Create New Order (Cash on Delivery exclusively)
 app.post('/api/orders', (req, res) => {
-  const { customer, items, paymentMethod, paymentDetails, discount = 0 } = req.body;
+  const { customer, items, paymentMethod = 'cod', paymentDetails, discount = 0 } = req.body;
 
-  if (!customer || !items || !items.length || !paymentMethod) {
+  if (!customer || !items || !items.length) {
     return res.status(400).json({ success: false, message: 'Missing required order details' });
   }
 
@@ -133,8 +133,8 @@ app.post('/api/orders', (req, res) => {
     shipping,
     tax,
     total,
-    paymentMethod, // 'cod', 'card', 'paypal'
-    paymentStatus: paymentMethod === 'cod' ? 'Cash on Delivery (Pending on Arrival)' : 'Paid (Authorized)',
+    paymentMethod: 'cod',
+    paymentStatus: 'Cash on Delivery (Pending on Arrival)',
     orderStatus: 'Confirmed & Processing',
     carrier: 'FedEx Home Delivery',
     trackingNumber,

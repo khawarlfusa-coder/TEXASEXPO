@@ -59,8 +59,7 @@ Walmart reviewers manually inspect and click the following pages. They are alrea
 ## 4. Cash on Delivery (COD) & Operational Checkout
 
 Walmart testers will test adding items to the cart and reaching the final checkout screen:
-- **Cash on Delivery (COD):** Set as the primary, prominent payment option with full postal code verification and doorstep cash collection instructions.
-- **Credit Card / PayPal:** Full functional simulation with 256-bit SSL UI indicators.
+- **Cash on Delivery (COD) Exclusively:** 100% pay-on-arrival model with full postal code verification and doorstep cash collection instructions.
 - **Automated Order Receipt & Invoice:** Generates printable invoices with unique order IDs (`TET-XXXXX`) and FedEx tracking numbers (`FX-78XXXXXXXXXX`).
 
 ---

@@ -36,16 +36,6 @@
       "enabled": true,
       "label": "Cash on Delivery (COD) / Pay on Arrival",
       "description": "Pay cash directly upon delivery to your doorstep. Available across all eligible US domestic zip codes."
-    },
-    "creditCard": {
-      "enabled": true,
-      "label": "Credit / Debit Card (Visa, Mastercard, Amex, Discover)",
-      "description": "256-bit SSL encrypted secure card checkout."
-    },
-    "paypal": {
-      "enabled": true,
-      "label": "PayPal / PayPal Credit",
-      "description": "Fast and secure checkout via your PayPal balance or linked card."
     }
   },
   "socials": {

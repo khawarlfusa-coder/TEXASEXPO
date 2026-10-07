@@ -556,24 +556,8 @@ function updateCartUI() {
 
 let currentPaymentMethod = 'cod';
 
-function setPaymentMethod(method) {
-  currentPaymentMethod = method;
-
-  document.querySelectorAll('.payment-tab-btn').forEach(btn => {
-    if (btn.dataset.method === method) {
-      btn.className = 'payment-tab-btn flex-1 py-3 px-4 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-900 font-bold text-xs flex items-center justify-center gap-2 transition';
-    } else {
-      btn.className = 'payment-tab-btn flex-1 py-3 px-4 rounded-xl border border-slate-200 bg-white text-slate-600 font-medium text-xs flex items-center justify-center gap-2 hover:bg-slate-50 transition';
-    }
-  });
-
-  const codNotice = document.getElementById('cod-payment-notice');
-  const cardNotice = document.getElementById('card-payment-form');
-  const paypalNotice = document.getElementById('paypal-payment-notice');
-
-  if (codNotice) codNotice.classList.toggle('hidden', method !== 'cod');
-  if (cardNotice) cardNotice.classList.toggle('hidden', method !== 'card');
-  if (paypalNotice) paypalNotice.classList.toggle('hidden', method !== 'paypal');
+function setPaymentMethod(method = 'cod') {
+  currentPaymentMethod = 'cod';
 }
 
 function openCheckoutModal() {
@@ -777,7 +761,7 @@ function displayOrderConfirmation(order) {
           </div>
           <div>
             <span class="text-slate-400 block font-medium">Payment Mode:</span>
-            <span class="font-bold ${isCOD ? 'text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded' : 'text-slate-900'}">${isCOD ? 'Cash on Delivery' : 'Credit Card'}</span>
+            <span class="font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Cash on Delivery (COD)</span>
           </div>
           <div>
             <span class="text-slate-400 block font-medium">Carrier:</span>
